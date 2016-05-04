@@ -18,7 +18,7 @@ class Game {
         this.answer == answer
     }
 
-    int countHit(String answer) {
+    private int countHit(String answer) {
         int hit = 0
         answer.toCharArray().eachWithIndex { char c, int index ->
             if (this.answer.charAt(index) == c) {
@@ -28,7 +28,7 @@ class Game {
         return hit
     }
 
-    int countBlow(String answer) {
+    private int countBlow(String answer) {
         int blow = 0
 
         answer.toCharArray().each { char c ->

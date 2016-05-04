@@ -32,29 +32,6 @@ class GameSpec extends Specification {
     }
 
     @Unroll
-    def "答えが102の時に、#inputを入力するとHit#hitCountと判定されるべき"() {
-        expect:
-        answer102.countHit(input) == hitCount
-        where:
-        input |hitCount
-        '456' | 0
-        '123' | 1
-
-    }
-
-    @Unroll
-    def "答えが102の時に、#inputを入力するとblow#blowCountと判定されるべき"() {
-        expect:
-        answer102.countBlow(input) == blowCount
-        where:
-        input |blowCount
-        '456' | 0
-        '098' | 1
-        '123' | 2
-        '021' | 3
-    }
-
-    @Unroll
     def "答えが102の時に、#inputを入力するとhit#hitCount, blow#blowCountと判定されるべき"() {
         expect:
         Tuple2<Integer, Integer> hint = answer102.guess(input)
