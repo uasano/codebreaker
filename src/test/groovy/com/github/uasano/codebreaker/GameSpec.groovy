@@ -11,6 +11,13 @@ class GameSpec extends Specification {
         answer102 = new Game('102')
     }
 
+    def "答えに4桁の文字列を渡すとIllegalArgumentExceptionが発生するべき"() {
+        when:
+        new Game('1234')
+        then:
+        thrown(IllegalArgumentException)
+    }
+
     def "答えが102の時に、102を入力すると正解を返すべき"() {
         expect:
         answer102.correct('102') == true
