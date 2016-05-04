@@ -53,4 +53,19 @@ class GameSpec extends Specification {
         '123' | 2
         '021' | 3
     }
+
+    @Unroll
+    def "答えが102の時に、#inputを入力するとhit#hitCount, blow#blowCountと判定されるべき"() {
+        expect:
+        Tuple2<Integer, Integer> hint = answer102.guess(input)
+        hint[0] == hitCount
+        hint[1] == blowCount
+
+        where:
+        input | hitCount | blowCount
+        '456' | 0 | 0
+        '123' | 1 | 2
+        '021' | 0 | 3
+        '102' | 3 | 3
+    }
 }

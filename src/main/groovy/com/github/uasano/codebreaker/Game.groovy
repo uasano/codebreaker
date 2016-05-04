@@ -38,4 +38,10 @@ class Game {
         }
         blow
     }
+
+    Tuple2<Integer, Integer> guess(String answer) {
+        Tuple2<Integer, Integer> hint = new Tuple2<>(
+                countHit(answer), countBlow(answer))
+        hint
+    }
 }
