@@ -37,6 +37,13 @@ class GameSpec extends Specification {
         thrown(IllegalArgumentException)
     }
 
+    def "答えに数字以外の文字を含んだ文字列を渡すとIllegalArgumentExceptionが発生するべき"() {
+        when:
+        new Game('12a')
+        then:
+        thrown(IllegalArgumentException)
+    }
+
     @Unroll
     def "答えが102の時に、#inputを入力するとcorrect#correct, hit#hitCount, blow#blowCountと判定されるべき"() {
         expect:

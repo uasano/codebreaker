@@ -11,7 +11,14 @@ class Game {
         if (hasDuplicateChar(answer)) {
             throw new IllegalArgumentException('answer can\'t use same characters.')
         }
+        if (hasNonNumericChar(answer)) {
+            throw new IllegalArgumentException('answer can\'t use non numeric characters.')
+        }
         this.answer = answer
+    }
+
+    private boolean hasNonNumericChar(String answer) {
+        return !answer.matches('[0-9]{3}')
     }
 
     private boolean hasDuplicateChar(String answer) {
