@@ -37,7 +37,10 @@ class Game {
     }
 
     Tuple guess(String answer) {
-        if (answer == null || answer.length() != this.answer.length()) {
+        if (answer == null) {
+            throw new NullPointerException('answer can\'t allow null')
+        }
+        if (answer.length() != this.answer.length())  {
             throw new IllegalArgumentException("answer must be ${this.answer.length()} characters.")
         }
         Tuple result = new Tuple(

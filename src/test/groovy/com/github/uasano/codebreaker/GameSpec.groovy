@@ -43,7 +43,14 @@ class GameSpec extends Specification {
         then:
         thrown(IllegalArgumentException)
         where:
-        input << [null, '12', '1234']
+        input << ['12', '1234']
+    }
+
+    def "答えが102の時に、nullを入力するとNullPointerExceptionが発生するべき"() {
+        when:
+        answer102.guess(null)
+        then:
+        thrown(NullPointerException)
     }
 
 }
