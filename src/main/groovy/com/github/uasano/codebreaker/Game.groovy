@@ -9,6 +9,9 @@ class Game {
     }
 
     boolean correct(String answer) {
+        if (answer == null) {
+            throw new NullPointerException('answer is null.')
+        }
         this.answer == answer
     }
 }

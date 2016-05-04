@@ -11,4 +11,13 @@ class GameSpec extends Specification {
         expect:
         sut.correct('102') == true
     }
+
+    def "答えが102の時に、nullを入力するとNullPointerExceptionを返すべき"() {
+        given:
+        Game sut = new Game('102')
+        when:
+        sut.correct(null)
+        then:
+        thrown(NullPointerException)
+    }
 }
