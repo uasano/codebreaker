@@ -27,4 +27,15 @@ class Game {
         }
         return hit
     }
+
+    int countBlow(String answer) {
+        int blow = 0
+
+        answer.toCharArray().each { char c ->
+            if (this.answer.contains(String.valueOf(c))) {
+                blow++
+            }
+        }
+        blow
+    }
 }

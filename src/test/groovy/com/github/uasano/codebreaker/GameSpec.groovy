@@ -41,4 +41,16 @@ class GameSpec extends Specification {
         '123' | 1
 
     }
+
+    @Unroll
+    def "答えが102の時に、#inputを入力するとblow#blowCountと判定されるべき"() {
+        expect:
+        answer102.countBlow(input) == blowCount
+        where:
+        input |blowCount
+        '456' | 0
+        '098' | 1
+        '123' | 2
+        '021' | 3
+    }
 }
