@@ -29,4 +29,14 @@ class GameSpec extends Specification {
         then:
         thrown(NullPointerException)
     }
+
+    def "答えが102の時に、456を入力するとHit0と判定されるべき"() {
+        expect:
+        answer102.countHit('456') == 0
+    }
+
+    def "答えが102の時に、123を入力するとHit1と判定されるべき"() {
+        expect:
+        answer102.countHit('123') == 1
+    }
 }

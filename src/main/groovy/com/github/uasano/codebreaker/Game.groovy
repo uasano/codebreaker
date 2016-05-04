@@ -17,4 +17,14 @@ class Game {
         }
         this.answer == answer
     }
+
+    int countHit(String answer) {
+        int hit = 0
+        answer.toCharArray().eachWithIndex { char c, int index ->
+            if (this.answer.charAt(index) == c) {
+                hit++
+            }
+        }
+        return hit
+    }
 }
