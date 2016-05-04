@@ -36,13 +36,9 @@ class Game {
     }
 
     private int countHit(String answer) {
-        int hit = 0
-        answer.toCharArray().eachWithIndex { char c, int index ->
-            if (this.answer.charAt(index) == c) {
-                hit++
-            }
-        }
-        return hit
+        [answer.toCharArray(), this.answer.toCharArray()].transpose().collect {
+            it -> it[0] == it[1]
+        }.findAll{ it }.size()
     }
 
     private int countBlow(String answer) {
