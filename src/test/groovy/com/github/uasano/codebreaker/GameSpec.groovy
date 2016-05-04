@@ -12,11 +12,14 @@ class GameSpec extends Specification {
         answer102 = new Game('102')
     }
 
-    def "答えに4桁の文字列を渡すとIllegalArgumentExceptionが発生するべき"() {
+    @Unroll
+    def "答えに3桁以外の#answerを設定すると、IllegalArgumentExceptionが発生するべき"() {
         when:
-        new Game('1234')
+        new Game(answer)
         then:
         thrown(IllegalArgumentException)
+        where:
+        answer << ['12', '1234']
     }
 
     @Unroll
