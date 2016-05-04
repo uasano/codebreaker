@@ -5,20 +5,20 @@ import spock.lang.Specification
 
 class GameSpec extends Specification {
 
-    Game sut
+    Game answer102
 
     void setup() {
-        sut = new Game('102')
+        answer102 = new Game('102')
     }
 
     def "答えが102の時に、102を入力すると正解を返すべき"() {
         expect:
-        sut.correct('102') == true
+        answer102.correct('102') == true
     }
 
     def "答えが102の時に、nullを入力するとNullPointerExceptionを返すべき"() {
         when:
-        sut.correct(null)
+        answer102.correct(null)
         then:
         thrown(NullPointerException)
     }
