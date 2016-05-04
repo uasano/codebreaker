@@ -19,31 +19,21 @@ class GameSpec extends Specification {
         thrown(IllegalArgumentException)
     }
 
-    def "答えが102の時に、102を入力すると正解を返すべき"() {
-        expect:
-        answer102.correct('102') == true
-    }
-
-    def "答えが102の時に、nullを入力するとNullPointerExceptionを返すべき"() {
-        when:
-        answer102.correct(null)
-        then:
-        thrown(NullPointerException)
-    }
-
     @Unroll
-    def "答えが102の時に、#inputを入力するとhit#hitCount, blow#blowCountと判定されるべき"() {
+    def "答えが102の時に、#inputを入力するとcorrect#correct, hit#hitCount, blow#blowCountと判定されるべき"() {
         expect:
-        Tuple2<Integer, Integer> hint = answer102.guess(input)
-        hint[0] == hitCount
-        hint[1] == blowCount
+        Tuple result = answer102.guess(input)
+
+        result[0] == correct
+        result[1] == hitCount
+        result[2] == blowCount
 
         where:
-        input | hitCount | blowCount
-        '456' | 0 | 0
-        '123' | 1 | 2
-        '021' | 0 | 3
-        '102' | 3 | 3
+        input | correct | hitCount | blowCount
+        '456' | false | 0 | 0
+        '123' | false | 1 | 2
+        '021' | false | 0 | 3
+        '102' | true  | 3 | 3
     }
 
     @Unroll

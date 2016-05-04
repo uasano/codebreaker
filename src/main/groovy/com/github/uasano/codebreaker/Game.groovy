@@ -11,7 +11,7 @@ class Game {
         this.answer = answer
     }
 
-    boolean correct(String answer) {
+    private correct(String answer) {
         if (answer == null) {
             throw new NullPointerException('answer is null.')
         }
@@ -39,12 +39,12 @@ class Game {
         blow
     }
 
-    Tuple2<Integer, Integer> guess(String answer) {
+    Tuple guess(String answer) {
         if (answer == null || answer.length() != this.answer.length()) {
             throw new IllegalArgumentException("answer must be ${this.answer.length()} characters.")
         }
-        Tuple2<Integer, Integer> hint = new Tuple2<>(
-                countHit(answer), countBlow(answer))
-        hint
+        Tuple result = new Tuple(
+                correct(answer), countHit(answer), countBlow(answer))
+        result
     }
 }
