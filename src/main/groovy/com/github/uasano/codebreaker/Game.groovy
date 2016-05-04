@@ -40,6 +40,9 @@ class Game {
     }
 
     Tuple2<Integer, Integer> guess(String answer) {
+        if (answer == null || answer.length() != this.answer.length()) {
+            throw new IllegalArgumentException("answer must be ${this.answer.length()} characters.")
+        }
         Tuple2<Integer, Integer> hint = new Tuple2<>(
                 countHit(answer), countBlow(answer))
         hint

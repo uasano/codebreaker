@@ -45,4 +45,15 @@ class GameSpec extends Specification {
         '021' | 0 | 3
         '102' | 3 | 3
     }
+
+    @Unroll
+    def "答えが102の時に、#inputを入力するとIllegalArgumentExceptionが発生するべき"() {
+        when:
+        answer102.guess(input)
+        then:
+        thrown(IllegalArgumentException)
+        where:
+        input << [null, '12', '1234']
+    }
+
 }
