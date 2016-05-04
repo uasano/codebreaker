@@ -1,6 +1,7 @@
 package com.github.uasano.codebreaker
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 
 class GameSpec extends Specification {
@@ -30,13 +31,14 @@ class GameSpec extends Specification {
         thrown(NullPointerException)
     }
 
-    def "答えが102の時に、456を入力するとHit0と判定されるべき"() {
+    @Unroll
+    def "答えが102の時に、#inputを入力するとHit#hitCountと判定されるべき"() {
         expect:
-        answer102.countHit('456') == 0
-    }
+        answer102.countHit(input) == hitCount
+        where:
+        input |hitCount
+        '456' | 0
+        '123' | 1
 
-    def "答えが102の時に、123を入力するとHit1と判定されるべき"() {
-        expect:
-        answer102.countHit('123') == 1
     }
 }
