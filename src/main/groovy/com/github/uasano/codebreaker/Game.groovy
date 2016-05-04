@@ -9,6 +9,6 @@ class Game {
     }
 
     boolean correct(String answer) {
-        false
+        this.answer == answer
     }
 }
