@@ -22,6 +22,13 @@ class GameSpec extends Specification {
         answer << ['12', '1234']
     }
 
+    def "答えにnullを設定するとIllegalArgumentExceptionが発生するべき"() {
+        when:
+        new Game(null)
+        then:
+        thrown(NullPointerException)
+    }
+
     @Unroll
     def "答えが102の時に、#inputを入力するとcorrect#correct, hit#hitCount, blow#blowCountと判定されるべき"() {
         expect:
