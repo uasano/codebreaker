@@ -8,7 +8,20 @@ class Game {
         if (answer.length() != 3) {
             throw new IllegalArgumentException('answer must be 3 characters.')
         }
+        if (hasDuplicateChar(answer)) {
+            throw new IllegalArgumentException('answer can\'t use same characters.')
+        }
         this.answer = answer
+    }
+
+    private boolean hasDuplicateChar(String answer) {
+        Set<Character> set = new HashSet<>()
+
+        answer.toCharArray().collect {c ->
+            set.add(c)
+        }.find{ it ->
+            !it
+        } != null
     }
 
     private correct(String answer) {

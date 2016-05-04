@@ -29,6 +29,14 @@ class GameSpec extends Specification {
         thrown(NullPointerException)
     }
 
+
+    def "答えに数字が重複した文字列を渡すとIllegalArgumentExceptionが発生するべき"() {
+        when:
+        new Game('112')
+        then:
+        thrown(IllegalArgumentException)
+    }
+
     @Unroll
     def "答えが102の時に、#inputを入力するとcorrect#correct, hit#hitCount, blow#blowCountと判定されるべき"() {
         expect:
